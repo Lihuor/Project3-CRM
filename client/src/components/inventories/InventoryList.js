@@ -27,8 +27,11 @@ function InventoryList() {
       {inventories.map((inventory) => {
         return(
           <div key={inventory._id}>
-            <h4><Link to={`/inventories/${inventory._id}`}>{inventory.title}</Link></h4>
-            <small>_id: {inventory._id}</small>
+            <h4>Product Name: <Link to={`/inventories/${inventory._id}`}>{inventory.productName}</Link></h4>
+            <h6>Brand: <Link to={`/inventories/${inventory._id}`}>{inventory.brand}</Link></h6>
+            <h6>Quantity: <Link to={`/inventories/${inventory._id}`}>{inventory.quantity}</Link></h6>
+            <h6>Date Created: <Link to={`/inventories/${inventory._id}`}>{inventory.date.split("T")[0]}</Link></h6>
+            {/* <small>_id: {inventory._id}</small> */}
             <hr/>
           </div>
         )     

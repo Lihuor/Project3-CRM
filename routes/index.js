@@ -30,7 +30,7 @@ router.post('/inventories', function(req, res) {
 });
 
 router.patch('/inventories/:id', function(req, res){    
-  inventories.findByIdAndUpdate(req.params.id, req.body)
+  Inventory.findByIdAndUpdate(req.params.id, req.body)
     .then(function() {
       res.json('Inventory updated');
     })
