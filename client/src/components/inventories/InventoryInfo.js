@@ -28,10 +28,11 @@ function InventoryInfo(props) {
 
   return ( 
     <div>
-      <h2>{inventory.productName}</h2>
-      <small>_id: {inventory._id}</small>
-      <p>{inventory.brand}</p>
-      <p>{inventory.quantity}</p>
+      <h5>Product Name: </h5>
+      <h2> {inventory.productName}</h2>
+      {/* <small>_id: {inventory._id}</small> */}
+      <p>Brand: {inventory.brand}</p>
+      <p>Quantity Import: {inventory.quantity} pcs</p>
       <div className="btn-group">
         <Link to={`/inventories/${inventory._id}/edit`} className="btn btn-primary">Edit</Link> 
         <button onClick={handleDelete} className="btn btn-danger">Delete</button> 
