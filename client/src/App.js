@@ -16,6 +16,10 @@ import ElectricianInfo from './components/electricians/ElectricianInfo';
 import ElectricianAdd from './components/electricians/ElectricianAdd';
 import ElectricianEdit from './components/electricians/ElectricianEdit';
 
+// Import Authentication
+import Register from './components/authentication/Register';
+
+
 function App() {
   return (
     <div className="App">     
@@ -46,7 +50,9 @@ function Navigation() {
               <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
             </Dropdown.Menu>
         </Dropdown>
-        <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to="/electricians">Electricians</NavLink></li>
+        <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to="/electricians">Electricians </NavLink></li>
+        <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to="/register">Register </NavLink></li>
+        
         </ul>
       </div>
     </nav>
@@ -65,6 +71,8 @@ function Main() {
       <Route exact path="/electricians/new" component={ElectricianAdd} />
       <Route exact path="/electricians/:_id" component={ElectricianInfo} />
       <Route exact path="/electricians/:_id/edit" component={ElectricianEdit} />
+      <Route exact path="/register" component={Register} />
+      {/* <Route exact path="/authentication/login" component={Login} /> */}
     </Switch>
   );
 }

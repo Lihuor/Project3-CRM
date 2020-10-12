@@ -14,10 +14,10 @@ password: {
     type: String,
     required: true
 },
-date: {
-    type: Date,
-    default: Date.now
-}
+password2: {
+    type: String,
+    required: true
+},
 });
 
 module.exports = User = mongoose.model("users", UserSchema);
