@@ -18,13 +18,16 @@ import ElectricianEdit from './components/electricians/ElectricianEdit';
 
 // Import Authentication
 import Register from './components/authentication/Register';
-
+import LoginButton from './components/authentication/Login';
+import LogoutButton from './components/authentication/Logout';
 
 function App() {
   return (
     <div className="App">     
       <Router>
         <Navigation />
+        <LoginButton />
+        <LogoutButton />
         <div className="container">
           <Main />
         </div>
