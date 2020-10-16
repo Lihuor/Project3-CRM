@@ -44,7 +44,7 @@ React React-bootstrap axios
 
 [Project-3-CRM](https://crm-9898.herokuapp.com/)
 
-![alt text](../../Desktop/Project3-CRM-V2/client/public/images/img/../../../../../warehouse-management-system/client/public/img/Project-3.png"Project-3-CRM")
+![alt text](../../../../../warehouse-management-system/client/public/img/Project-3.png"Project-3-CRM")
 
 ## Team:
 
