@@ -1,15 +1,24 @@
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
-import React from 'react';
-import {BrowserRouter as Router, Route, NavLink, Switch} from 'react-router-dom';
+import React, {useEffect} from 'react';
+import {BrowserRouter as Router, Route, NavLink, Switch, Redirect} from 'react-router-dom';
 import { Dropdown } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
-import Home from './components/pages/Home';
+// import Home from './components/pages/Home';
 import jwt_decode from "jwt-decode";
-import setAuthToken from "./utils/setAuthToken";
+// import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
 
+import { connect } from 'react-redux';
+import { getUser } from './redux/Auth/user.actions';
+import SignInPage from './pages/app/auth/SignInPage';
+import SignUpPage from './pages/app/auth/SignUpPage';
+import RegistrationPage from './pages/app/auth/Registration/RegistrationPage';
+import Error404Page from './pages/app/Error404Page';
+import AppMainRoute from './pages/App.routes';
+import LandingPage from './pages/app/LandingPage';
+import setAuthToken from './util/setAuthToken';
 
 import { Provider } from "react-redux";
 import store from "./store";
@@ -36,6 +45,59 @@ import LogoutButton from './components/authentication/Logout';
 //  import Navbar from "./components/layout/Navbar";
 // import Landing from "./components/layout/Landing";
 
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
+
+const App = props => {
+  const { isAuthenticated } = props.auth;
+
+  useEffect(() => {
+    props.getUser();
+  }, []);
+
+  return (
+    <Switch>
+      <Route exact path="/" component={LandingPage} />
+      <PrivateRoute path="/app" component={AppMainRoute} />
+      <Route
+        path="/signin"
+        render={routeProps =>
+          isAuthenticated ? (
+            <Redirect to="/app" />
+          ) : (
+            <SignInPage {...routeProps} />
+          )
+        }
+      />
+      <Route
+        path="/signup"
+        render={routeProps =>
+          isAuthenticated ? (
+            <Redirect to="/app" />
+          ) : (
+            <SignUpPage {...routeProps} />
+          )
+        }
+      />
+      <Route path="/registration" component={RegistrationPage} />
+      <Route component={Error404Page} />
+    </Switch>
+  );
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+const mapDispatchToProps = { getUser };
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
+
+{/* 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
   // Set auth token header auth
@@ -115,7 +177,7 @@ function Main() {
           <Route exact path="/electricians/:_id/edit" component={ElectricianEdit} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
-          {/* <Route exact path="/authentication/login" component={Login} /> */}
+          <Route exact path="/authentication/login" component={Login} />
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
         </Switch>
       </Router>
@@ -124,3 +186,5 @@ function Main() {
 }
 
 export default App;
+*/}
+
