@@ -85,8 +85,10 @@ function Navigation() {
 
             <Dropdown.Menu>
               <Dropdown.Item href="/inventories">Creating New Inventories</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+              <Dropdown.Item href="#/action-2">Stock Allocation</Dropdown.Item>
+              <Dropdown.Item href="#/action-3">Stock Return</Dropdown.Item>
+              <Dropdown.Item href="#/action-3">Stock Take</Dropdown.Item>
+              <Dropdown.Item href="#/action-3">Stock Transfer</Dropdown.Item>
             </Dropdown.Menu>
         </Dropdown>
         <li className="nav-item"><NavLink exact className="nav-link" activeClassName="active" to="/electricians">Electricians </NavLink></li>
